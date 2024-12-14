@@ -15,7 +15,7 @@ class TestICMPPacket(unittest.TestCase):
         checksum = 0x1a2b
         identifier = 0x1234
         sequence_number = 0x0001
-        payload = b"Hello ICMP!"
+        payload = b'Hello ICMP!'
 
         # Act
         icmp_header = struct.pack('!BBHHH',
@@ -43,7 +43,7 @@ class TestICMPPacket(unittest.TestCase):
         self.packet.checksum = 0x1a2b
         self.packet.identifier = 0x1234
         self.packet.sequence_number = 0x0001
-        self.packet.payload = b"Hello ICMP!"
+        self.packet.payload = b'Hello ICMP!'
 
         encoded = self.packet.encode()
 
@@ -61,17 +61,17 @@ class TestICMPPacket(unittest.TestCase):
 
     def test_get_payload(self):
         # Arrange
-        self.packet.payload = b"ICMP Payload"
+        self.packet.payload = b'ICMP Payload'
 
         # Assert
-        self.assertEqual(self.packet.get_payload(), b"ICMP Payload")
+        self.assertEqual(self.packet.get_payload(), b'ICMP Payload')
 
     def test_set_payload(self):
         # Arrange
-        self.packet.set_payload(b"New Payload")
+        self.packet.set_payload(b'New Payload')
 
         # Assert
-        self.assertEqual(self.packet.payload, b"New Payload")
+        self.assertEqual(self.packet.payload, b'New Payload')
 
 
 if __name__ == '__main__':

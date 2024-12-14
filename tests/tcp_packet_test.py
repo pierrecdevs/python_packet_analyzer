@@ -20,7 +20,7 @@ class TestTCPPacket(unittest.TestCase):
         window = 4096
         checksum = 1234
         urg = 0
-        payload = b"Hello TCP!"
+        payload = b'Hello TCP!'
 
         tcp_header = struct.pack('!HHLLBBHHH',
                                  source_port,

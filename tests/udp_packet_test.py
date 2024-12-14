@@ -14,7 +14,7 @@ class TestUDPPacket(unittest.TestCase):
         dest_port = 80
         length = 16  # Header (8 bytes) + payload (8 bytes)
         checksum = 4321
-        payload = b"Hello UDP!"
+        payload = b'Hello UDP!'
 
         # Act
         udp_header = struct.pack('!HHHH',
@@ -55,10 +55,10 @@ class TestUDPPacket(unittest.TestCase):
 
     def test_get_payload(self):
         # Arrange
-        self.packet.payload = b"UDP Payload"
+        self.packet.payload = b'UDP Payload'
 
         # Assert
-        self.assertEqual(self.packet.get_payload(), b"UDP Payload")
+        self.assertEqual(self.packet.get_payload(), b'UDP Payload')
 
     def test_get_parent(self):
         # Arrange
