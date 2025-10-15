@@ -1,5 +1,6 @@
 import os
 import socket
+from time import sleep
 from net.packets.ethernet_frame import EthernetFrame
 from net.packets.ip_packet import IPPacket
 from net.packets.icmp_packet import ICMPPacket
@@ -11,9 +12,9 @@ ETHER_P_ALL = 0x0003
 
 class Sniffer(object):
 
-    def __init__(self, interface: str):
+    def __init__(self, interface: str, max_buffer_size: int = 65535):
         self.running = False
-        self.max_buffer_size = 65535
+        self.max_buffer_size = max_buffer_size
         self.interface = interface
         self.sniffer = None
 
@@ -85,7 +86,7 @@ class Sniffer(object):
                         print(f'\t\t    [Data]\n\t\t {udp.get_payload()}')
                     else:
                         print(f'\t\t\t    [Protocol: {ip.protocol}]')
-
+                sleep(0.5)
         except KeyboardInterrupt:
             self.running = False
             self.stop()
