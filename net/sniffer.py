@@ -41,7 +41,13 @@ class Sniffer(object):
                 for packet in self.sniff():
                     self.display_packet(packet)
 
-        except Exception:
+        except PermissionError:
+            print(
+                f"[ERROR] Permission error")
+            self.running = False
+            self.stop()
+        except Exception as e:
+            print(f"[ERROR] {e}")
             self.running = False
             self.stop()
 
